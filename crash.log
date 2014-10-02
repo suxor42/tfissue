@@ -1,0 +1,52 @@
+2014/10/02 19:11:57 Detected home directory from env var: /Users/suxor
+2014/10/02 19:11:57 [DEBUG] Discoverd plugin: aws = /Users/suxor/terraform-dev/terraform-provider-aws
+2014/10/02 19:11:57 [DEBUG] Discoverd plugin: cloudflare = /Users/suxor/terraform-dev/terraform-provider-cloudflare
+2014/10/02 19:11:57 [DEBUG] Discoverd plugin: consul = /Users/suxor/terraform-dev/terraform-provider-consul
+2014/10/02 19:11:57 [DEBUG] Discoverd plugin: digitalocean = /Users/suxor/terraform-dev/terraform-provider-digitalocean
+2014/10/02 19:11:57 [DEBUG] Discoverd plugin: dnsimple = /Users/suxor/terraform-dev/terraform-provider-dnsimple
+2014/10/02 19:11:57 [DEBUG] Discoverd plugin: google = /Users/suxor/terraform-dev/terraform-provider-google
+2014/10/02 19:11:57 [DEBUG] Discoverd plugin: heroku = /Users/suxor/terraform-dev/terraform-provider-heroku
+2014/10/02 19:11:57 [DEBUG] Discoverd plugin: mailgun = /Users/suxor/terraform-dev/terraform-provider-mailgun
+2014/10/02 19:11:57 [DEBUG] Discoverd plugin: file = /Users/suxor/terraform-dev/terraform-provisioner-file
+2014/10/02 19:11:57 [DEBUG] Discoverd plugin: local-exec = /Users/suxor/terraform-dev/terraform-provisioner-local-exec
+2014/10/02 19:11:57 [DEBUG] Discoverd plugin: remote-exec = /Users/suxor/terraform-dev/terraform-provisioner-remote-exec
+2014/10/02 19:11:57 Detected home directory from env var: /Users/suxor
+2014/10/02 19:11:57 [DEBUG] Attempting to open CLI config file: /Users/suxor/.terraformrc
+2014/10/02 19:11:57 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2014/10/02 19:11:57 waiting for all plugin processes to complete...
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal 0xb code=0x1 addr=0x0 pc=0x453a8]
+
+goroutine 16 [running]:
+runtime.panic(0x466ac0, 0x7368c4)
+	/usr/local/Cellar/go/1.3.2/libexec/src/pkg/runtime/panic.c:279 +0xf5
+github.com/hashicorp/terraform/command.formatStateModuleExpand(0xc208028850, 0xc20805c660, 0xc2080a9ae8)
+	/Users/suxor/go/src/github.com/hashicorp/terraform/command/format_state.go:95 +0xc98
+github.com/hashicorp/terraform/command.FormatState(0xc2080a9ae8, 0x0, 0x0)
+	/Users/suxor/go/src/github.com/hashicorp/terraform/command/format_state.go:43 +0x796
+github.com/hashicorp/terraform/command.(*ShowCommand).Run(0xc20804a680, 0xc20800e020, 0x1, 0x1, 0xc20802a180)
+	/Users/suxor/go/src/github.com/hashicorp/terraform/command/show.go:90 +0xa74
+github.com/mitchellh/cli.(*CLI).Run(0xc20804c5a0, 0xc20805c4b0, 0x0, 0x0)
+	/Users/suxor/go/src/github.com/mitchellh/cli/cli.go:100 +0x3a1
+main.wrappedMain(0x0)
+	/Users/suxor/go/src/github.com/hashicorp/terraform/main.go:136 +0x8e1
+main.realMain(0x0)
+	/Users/suxor/go/src/github.com/hashicorp/terraform/main.go:74 +0x798
+main.main()
+	/Users/suxor/go/src/github.com/hashicorp/terraform/main.go:17 +0x1e
+
+goroutine 19 [finalizer wait]:
+runtime.park(0x1ab30, 0x739f38, 0x738989)
+	/usr/local/Cellar/go/1.3.2/libexec/src/pkg/runtime/proc.c:1369 +0x89
+runtime.parkunlock(0x739f38, 0x738989)
+	/usr/local/Cellar/go/1.3.2/libexec/src/pkg/runtime/proc.c:1385 +0x3b
+runfinq()
+	/usr/local/Cellar/go/1.3.2/libexec/src/pkg/runtime/mgc0.c:2644 +0xcf
+runtime.goexit()
+	/usr/local/Cellar/go/1.3.2/libexec/src/pkg/runtime/proc.c:1445
+
+goroutine 20 [syscall]:
+os/signal.loop()
+	/usr/local/Cellar/go/1.3.2/libexec/src/pkg/os/signal/signal_unix.go:21 +0x1e
+created by os/signal.init·1
+	/usr/local/Cellar/go/1.3.2/libexec/src/pkg/os/signal/signal_unix.go:27 +0x32
